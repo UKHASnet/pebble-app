@@ -5,7 +5,7 @@
 static Window *s_window;	
 static TextLayer *s_top_line;
 static TextLayer *s_middle_line;
-static TextLayer *s_botton_line;
+static TextLayer *s_bottom_line;
 
 static void window_init(Window *window) {
   	// Get information about the Window
@@ -24,7 +24,7 @@ static void window_init(Window *window) {
 
 	text_layer_set_text(s_top_line, "TOP");
 	text_layer_set_text(s_top_line, "MIDDLE");
-	text_layer_set_text(s_top_line, "MEGA LOLZ")
+	text_layer_set_text(s_top_line, "MEGA LOLZ");
 
   	layer_add_child(window_layer, text_layer_get_layer(s_top_line));
 	layer_add_child(window_layer, text_layer_get_layer(s_middle_line));
