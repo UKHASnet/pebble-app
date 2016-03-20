@@ -21,7 +21,7 @@ static void window_init(Window *window) {
   text_layer_set_font(s_top_line, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   text_layer_set_text_alignment(s_top_line, GTextAlignmentCenter);
 
-  layer_add_child(window_layer, text_layer_get_layer(s_top_line);
+  layer_add_child(window_layer, text_layer_get_layer(s_top_line));
 }
 
 static void window_deinit(Window *window) {
