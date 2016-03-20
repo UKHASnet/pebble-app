@@ -39,9 +39,10 @@ function getData(){
 	  response = JSON.parse(this.responseText);
 	  if (response.lPackets.length>0){
 	  	var newestMessage = response.lPackets[0];
-
-	  	newestMessage.status = 1;
-	  	Pebble.sendAppMessage(newestMessage, messageSuccessHandler, messageFailureHandler);
+	  	var dict = {
+		  'message': newestMessage.p
+		};
+	  	Pebble.sendAppMessage(dict, messageSuccessHandler, messageFailureHandler);
 	  }
 	};
 
