@@ -22,6 +22,18 @@ Pebble.addEventListener("appmessage", function(e) {
 	console.log("Received Message: " + e.payload.message);
 });
 
+Pebble.addEventListener('showConfiguration', function() {
+	var url = 'http://ukhasnet.github.io/pebble-app/configure.html';
+
+	Pebble.openURL(url);
+});
+
+Pebble.addEventListener('webviewclosed', function(e) {
+  // Decode the user's preferences
+  var configData = JSON.parse(decodeURIComponent(e.response));
+  localStorage.setItem('nodeName', configData.name);
+});
+
 //The pebble message contains data on the node's most recent packets
 //each individual packet data has the structure. 
 //{"p":"0lV4.28[BOX0,AH1,AJ1,AJ2,RUSS1,DB02,MB31]","t":"2016-03-20T14:29:36.875Z"}
@@ -51,14 +63,3 @@ function getData(){
 	request.send();
 }
 
-Pebble.addEventListener('showConfiguration', function() {
-	var url = 'http://ukhasnet.github.io/pebble-app/configure.html';
-
-	Pebble.openURL(url);
-});
-
-Pebble.addEventListener('webviewclosed', function(e) {
-  // Decode the user's preferences
-  var configData = JSON.parse(decodeURIComponent(e.response));
-  localStorage.setItem('nodeName', configData.name);
-}
