@@ -1,5 +1,13 @@
 // ukhasnet.h
 
+typeof enum {
+	message,
+
+}
+
+
+
+
 static void main_window_init();
 
 static void main_window_deinit();

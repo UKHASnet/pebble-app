@@ -31,6 +31,20 @@ static void window_init(Window *window) {
 	layer_add_child(window_layer, text_layer_get_layer(s_bottom_line));
 }
 
+static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
+	// Does this message contain a temperature value?
+	Tuple *message_tuple = dict_find(iter, message);
+
+	if(temperature_tuple) {
+		// This value was stored as JS Number, which is stored here as int32_t
+		int32_t temperature = temperature_tuple->value->int32;
+	}
+
+
+
+	text_layer_set_text(s_middle_line, );
+}
+
 static void setup_text_line(TextLayer *text_layer) {
 	text_layer_set_background_color(text_layer, GColorClear);
 	text_layer_set_text_color(text_layer, GColorBlack);
@@ -44,14 +58,22 @@ static void window_deinit(Window *window) {
 	text_layer_destroy(s_bottom_line);
 }
 
+static void register_callbacks() {
+
+	app_message_register_inbox_received(inbox_received_callback);
+}
+
+
 
 static void app_init(void) {
 	s_window = window_create();
-	// Set handlers to manage the elements inside the Window
+
 	window_set_window_handlers(s_window, (WindowHandlers) {
 		.load = window_init,
 		.unload = window_deinit
 	});
+
+	register_callbacks();
 
 	window_stack_push(s_window, true);
 }
