@@ -44,3 +44,9 @@ function getData(){
 	request.open(method, url);
 	request.send();
 }
+
+Pebble.addEventListener('showConfiguration', function() {
+  var url = 'http://ukhasnet.github.io/pebble-app/html/configure.html';
+
+  Pebble.openURL(url);
+});
