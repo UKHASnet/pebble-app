@@ -15,6 +15,9 @@
     },
     "sdkVersion": "3",
     "shortName": "UKHASNET",
+    "targetPlatforms": [
+        "basalt"
+    ],
     "uuid": "65f58cf6-41a5-4646-8a83-13147ce82514",
     "versionLabel": "1.0",
     "watchapp": {
