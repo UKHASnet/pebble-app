@@ -2,7 +2,7 @@
 #include <pebble.h>
 #include <ukhasnet.h>
 
-static Window *s_window;
+static Window *s_window;	
 static TextLayer *s_top_line;
 static TextLayer *s_middle_line;
 static TextLayer *s_bottom_line;
@@ -45,7 +45,8 @@ static void window_deinit(Window *window) {
 }
 
 
-static void app_init(void) s_window = window_create();
+static void app_init(void) {
+	s_window = window_create();
 	// Set handlers to manage the elements inside the Window
 	window_set_window_handlers(s_window, (WindowHandlers) {
 		.load = window_init,
