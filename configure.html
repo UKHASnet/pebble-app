@@ -27,7 +27,7 @@ function loadNodes(){
 		var select = document.getElementById("selectName");
 		for (i = 0; i < nodesList.length; i++){
 			var opt = document.createElement("option");
-			opt.value = "value";
+			opt.value = nodesList[i].name;
 			opt.textContent = nodesList[i].name;
 			select.appendChild(opt);
 		}
@@ -49,7 +49,8 @@ function initialize(){
 
     // Make a data object to be sent, coercing value types to integers
     var options = {
-    	'name': name.value
+    	'name': name.value,
+        'value':name.textContent
     };
 
     // Determine the correct return URL (emulator vs real watch)
