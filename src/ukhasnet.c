@@ -82,6 +82,7 @@ static void app_deinit(void) {
 }
 
 int main( void ) {
+	printf("This is the WATCH RAWWRRRRR");
 	app_init();
 	app_event_loop();
 	app_deinit();
