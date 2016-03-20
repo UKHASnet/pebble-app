@@ -13,9 +13,9 @@ static void window_init(Window *window) {
 	GRect bounds = layer_get_bounds(window_layer);
 
 	// Create the TextLayer with specific bounds
-	s_top_line = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
-	s_middle_line = text_layer_create(GRect(10, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
-	s_bottom_line = text_layer_create(GRect(20, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+	s_top_line = text_layer_create(GRect(0, 0, bounds.size.w, 50));
+	s_middle_line = text_layer_create(GRect(0, 40, bounds.size.w, 50));
+	s_bottom_line = text_layer_create(GRect(0, 80, bounds.size.w, 50));
 
 	// Improve the layout to be more like a watchface
 	setup_text_line(s_top_line);
