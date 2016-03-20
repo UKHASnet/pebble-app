@@ -1,6 +1,6 @@
 // ukhasnet.c
 #include <pebble.h>
-#include <ukhasnet.h>
+#include <ukhasnet.h>;
 
 static Window *s_window;	
 static TextLayer *s_top_line;
