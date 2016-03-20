@@ -7,7 +7,7 @@ static TextLayer *s_top_line;
 static TextLayer *s_middle_line;
 static TextLayer *s_bottom_line;
 
-static void window_init() {
+static void window_init(Window *window) {
 
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
@@ -25,7 +25,7 @@ static void window_init() {
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 }
 
-static void window_deinit() {
+static void window_deinit(Window *window) {
 	
 	text_layer_destroy(s_top_line);
 
