@@ -6,7 +6,6 @@ function messageSuccessHandler() {
 // Called when the message send attempt fails
 function messageFailureHandler() {
 	console.log("Message send failed.");
-	sendMessage();
 }
 
 // Called when JS is ready
