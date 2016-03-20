@@ -23,8 +23,8 @@ static void window_init(Window *window) {
 	setup_text_line(s_bottom_line);
 
 	text_layer_set_text(s_top_line, "TOP");
-	text_layer_set_text(s_top_line, "MIDDLE");
-	text_layer_set_text(s_top_line, "MEGA LOLZ");
+	text_layer_set_text(s_middle_line, "MIDDLE");
+	text_layer_set_text(s_bottom_line, "MEGA LOLZ");
 
 	layer_add_child(window_layer, text_layer_get_layer(s_top_line));
 	layer_add_child(window_layer, text_layer_get_layer(s_middle_line));
