@@ -4,6 +4,8 @@
 
 static Window *s_window;	
 static TextLayer *s_top_line;
+static TextLayer *s_middle_line;
+static TextLayer *s_botton_line;
 
 static void window_init(Window *window) {
   	// Get information about the Window
@@ -30,7 +32,7 @@ static void window_init(Window *window) {
 }
 
 static void setup_text_line(TextLayer *text_layer) {
-	  	text_layer_set_background_color(s_top_line, GColorClear);
+	text_layer_set_background_color(s_top_line, GColorClear);
   	text_layer_set_text_color(s_top_line, GColorBlack);
   
   	text_layer_set_font(s_top_line, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));

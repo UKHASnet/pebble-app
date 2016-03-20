@@ -8,5 +8,5 @@ static void app_init();
 
 static void app_deinit();
 
-
+static void setup_text_line(TextLayer *text_layer);
 
