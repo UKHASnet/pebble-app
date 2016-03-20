@@ -7,7 +7,7 @@
         ""
     ],
     "companyName": "ben.oxley@gmail.com",
-    "enableMultiJS": true,
+    "enableMultiJS": false,
     "longName": "UKHASNET",
     "projectType": "native",
     "resources": {
