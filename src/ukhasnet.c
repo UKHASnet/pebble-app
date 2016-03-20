@@ -35,14 +35,12 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 
-	if(temperature_tuple) {
+	if(messagee_tuple) {
 		// This value was stored as JS Number, which is stored here as int32_t
-		int32_t temperature = temperature_tuple->value->int32;
+		char[] message_data = message_tuple->value->char[];
 	}
 
-
-
-	text_layer_set_text(s_middle_line, );
+	text_layer_set_text(s_middle_line, message_data);
 }
 
 static void setup_text_line(TextLayer *text_layer) {
