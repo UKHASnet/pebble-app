@@ -42,6 +42,8 @@ static void init(void) {
   });
 
 	window_stack_push(s_window, true);
+
+
 }
 
 static void deinit(void) {
