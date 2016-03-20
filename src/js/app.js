@@ -27,9 +27,12 @@ Pebble.addEventListener("appmessage", function(e) {
   console.log("Received Message: " + e.payload.message);
 });
 
+//The pebble message contains data on the node's most recent packets
+//each individual packet data has the structure. 
+//{"p":"0lV4.28[BOX0,AH1,AJ1,AJ2,RUSS1,DB02,MB31]","t":"2016-03-20T14:29:36.875Z"}
 function getData(){
 	var method = 'GET';
-	var url = 'https://ukhas.net/api/nodeData?id=143&period=60';
+	var url = 'https://ukhas.net/api/nodePackets?name=BOX0';
 
 	// Create the request
 	var request = new XMLHttpRequest();
@@ -38,6 +41,8 @@ function getData(){
 	request.onload = function() {
 	  // The request was successfully completed!
 	  response = JSON.parse(this.responseText);
+	  response.status = 1;
+	  Pebble.sendAppMessage(response, messageSuccessHandler, messageFailureHandler);
 	};
 
 	// Send the request
