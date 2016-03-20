@@ -1,14 +1,11 @@
+// ukhasnet.c
 #include <pebble.h>
-
-// Like 'totes the best pebbs watchface EVA.
+#include <ukhasnet.h>;
 
 static Window *s_window;	
 static TextLayer *s_top_line;
-static TextLayer *s_middle_line;
-static TextLayer *s_bottom_line;
 
 static void window_init(Window *window) {
-
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
@@ -23,12 +20,12 @@ static void window_init(Window *window) {
   text_layer_set_text(s_top_line, "00:00");
   text_layer_set_font(s_top_line, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   text_layer_set_text_alignment(s_top_line, GTextAlignmentCenter);
+
+  layer_add_child(window_layer, text_layer_get_layer(s_top_line);
 }
 
 static void window_deinit(Window *window) {
-	
 	text_layer_destroy(s_top_line);
-
 }
 
 
