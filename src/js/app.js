@@ -26,3 +26,21 @@ Pebble.addEventListener("ready", function(e) {
 Pebble.addEventListener("appmessage", function(e) {
   console.log("Received Message: " + e.payload.message);
 });
+
+function getData(){
+	var method = 'GET';
+	var url = 'https://ukhas.net/api/nodeData?id=143&period=60';
+
+	// Create the request
+	var request = new XMLHttpRequest();
+
+	// Specify the callback for when the request is completed
+	request.onload = function() {
+	  // The request was successfully completed!
+	  response = JSON.parse(this.responseText);
+	};
+
+	// Send the request
+	request.open(method, url);
+	request.send();
+}
