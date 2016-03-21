@@ -39,11 +39,11 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
 		    // Use a static buffer to store the string for display
-    static char s_buffer[MAX_LENGTH];
-    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", location_name);
-    text_layer_set_text(s_middle_line, message_data);
+    static char s_buffer[100];
+    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
+    text_layer_set_text(s_middle_line, s_buffer);
 	}
-	
+
 }
 
 static void setup_text_line(TextLayer *text_layer) {
