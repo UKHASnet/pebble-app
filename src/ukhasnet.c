@@ -6,6 +6,11 @@ static Window *s_window;
 static TextLayer *s_top_line;
 static TextLayer *s_middle_line;
 static TextLayer *s_bottom_line;
+// Largest expected inbox and outbox message sizes
+const uint32_t inbox_size = 256;
+const uint32_t outbox_size = 10;
+
+
 
 static void window_init(Window *window) {
 	// Get information about the Window
@@ -32,14 +37,16 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
+	printf("Receiving Message\n");
 		// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 
 	if(message_tuple) {
+		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
 		    // Use a static buffer to store the string for display
-    static char s_buffer[100];
+    static char s_buffer[256];
     snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
     text_layer_set_text(s_middle_line, s_buffer);
 	}
@@ -66,6 +73,8 @@ static void register_callbacks() {
 
 
 static void app_init(void) {
+	// Open AppMessage
+	app_message_open(inbox_size, outbox_size);
 	s_window = window_create();
 
 	window_set_window_handlers(s_window, (WindowHandlers) {
