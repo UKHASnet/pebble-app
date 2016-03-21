@@ -1,8 +1,9 @@
 // ukhasnet.h
 
-typeof enum {
+typedef enum {
 	message
 }
+
 
 static void main_window_init();
 
