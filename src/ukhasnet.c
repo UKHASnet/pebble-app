@@ -60,8 +60,7 @@ static void window_deinit(Window *window) {
 }
 
 static void register_callbacks() {
-
-	app_message_register_inbox_received(inbox_received_callback);
+	app_message_register_inbox_received(inbox_recieved_callback);
 }
 
 
