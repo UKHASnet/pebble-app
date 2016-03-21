@@ -32,15 +32,18 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	// Does this message contain a temperature value?
+		// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 
 	if(message_tuple) {
 		// This value was stored as JS Number, which is stored here as int32_t
-		char[] message_data = message_tuple->value->char[];
+		char *message_name = message_tuple->value->cstring;
+		    // Use a static buffer to store the string for display
+    static char s_buffer[MAX_LENGTH];
+    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", location_name);
+    text_layer_set_text(s_middle_line, message_data);
 	}
-
-	text_layer_set_text(s_middle_line, message_data);
+	
 }
 
 static void setup_text_line(TextLayer *text_layer) {
