@@ -35,7 +35,7 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 
-	if(messagee_tuple) {
+	if(message_tuple) {
 		// This value was stored as JS Number, which is stored here as int32_t
 		char[] message_data = message_tuple->value->char[];
 	}
