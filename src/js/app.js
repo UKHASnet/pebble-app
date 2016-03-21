@@ -47,7 +47,7 @@ function getData(){
 	request.onload = function() {
 	  // The request was successfully completed!
 	  console.log("Received JSON from website for " + localStorage.getItem('nodeName'));
-	  response = JSON.parse(this.responseText);
+	  var response = JSON.parse(this.responseText);
 	  if (response.lPackets.length>0){
 	  	var newestMessage = response.lPackets[0];
 	  	var dict = {
