@@ -1,8 +1,8 @@
 // ukhasnet.h
 
-typedef enum {
+typedef enum  {
 	message
-}
+} AppKeys;
 
 
 static void main_window_init();
