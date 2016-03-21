@@ -40,13 +40,25 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	printf("Receiving Message\n");
 		// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
+	uint8_t buffer[256];
+	Tuple *tuple = dict_read_begin_from_buffer(&iter, buffer, 256);
+	while (tuple) {
+	  switch (tuple->key) {
+	    case SOME_DATA_KEY:
+	      foo(tuple->value->data, tuple->length);
+	      break;
+	    case SOME_STRING_KEY:
+	      bar(tuple->value->cstring);
+	      break;
+	  }
+	  tuple = dict_read_next(&iter);
+	}
 
 	if(message_tuple) {
 		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
-		    // Use a static buffer to store the string for display
-    static char s_buffer[256];
+			static char s_buffer[256];
     snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
     text_layer_set_text(s_middle_line, s_buffer);
 	}
