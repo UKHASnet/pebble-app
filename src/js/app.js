@@ -53,6 +53,7 @@ function getData(){
 	  	var dict = {
 		  'message': newestMessage.p
 		};
+		console.log("Sending: "+newestMessage.p);
 	  	Pebble.sendAppMessage(dict, messageSuccessHandler, messageFailureHandler);
 	  }
 	};
