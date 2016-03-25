@@ -1,11 +1,11 @@
 {
     "appKeys": {
+        "AppKeyNode": 1,
         "AppKeyPacket": 0,
-        "AppKeyNode" : 1,
-        "AppKeyTime" : 2
+        "AppKeyTime": 2
     },
     "capabilities": [
-        ""
+        "configurable"
     ],
     "companyName": "ben.oxley@gmail.com",
     "enableMultiJS": false,
@@ -17,6 +17,7 @@
     "sdkVersion": "3",
     "shortName": "UKHASNET",
     "targetPlatforms": [
+        "aplite",
         "basalt"
     ],
     "uuid": "65f58cf6-41a5-4646-8a83-13147ce82514",
