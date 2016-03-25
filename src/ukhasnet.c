@@ -20,9 +20,9 @@ static void window_init(Window *window) {
 	GRect bounds = layer_get_bounds(window_layer);
 
 	// Create the TextLayer with specific bounds
-	s_top_line = text_layer_create(GRect(0, 0, bounds.size.w, 25));
-	s_middle_line = text_layer_create(GRect(0, 25, bounds.size.w, 75));
-	s_bottom_line = text_layer_create(GRect(0, 100, bounds.size.w, 50));
+	s_top_line = text_layer_create(GRect(0, 0, bounds.size.w, 30));
+	s_middle_line = text_layer_create(GRect(0, 30, bounds.size.w, 110));
+	s_bottom_line = text_layer_create(GRect(0, 110, bounds.size.w, 144));
 
 	// Improve the layout to be more like a watchface
 	setup_text_line(s_top_line);
@@ -31,7 +31,7 @@ static void window_init(Window *window) {
 
 	text_layer_set_background_color(s_top_line, GColorPictonBlue);
 	text_layer_set_text_color(s_top_line, GColorWhite);
-	text_layer_set_background_color(s_middle_line, GColorLightGray);
+	text_layer_set_background_color(s_middle_line, GColorRajah);
 	//text_layer_set_text_color(s_middle_line, GColorWhite);
 	text_layer_set_background_color(s_bottom_line, GColorOxfordBlue);
 	text_layer_set_text_color(s_bottom_line, GColorLightGray);
