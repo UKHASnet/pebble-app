@@ -37,7 +37,7 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s",));
+	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s"));
 	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Location: %s"));
 	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s"));
 }
