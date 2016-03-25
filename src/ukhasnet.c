@@ -37,9 +37,9 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	char str[15];
-	sprintf(str, "%d", dict_size(iter));
-	printf("Receiving Message from dictionary of size "+str+"\n");
+	char str[60];
+	snprintf(str, "Receiving Message from dictionary of size %d\n\0", dict_size(iter));
+	printf(str);
 		// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 	uint8_t buffer[256];
