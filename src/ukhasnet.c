@@ -29,6 +29,14 @@ static void window_init(Window *window) {
 	setup_text_line(s_middle_line);
 	setup_text_line(s_bottom_line);
 
+	text_layer_set_background_color(s_top_line, GColorPictonBlue);
+	text_layer_set_text_color(s_top_line, GColorWhite);
+	text_layer_set_background_color(s_middle_line, ColorLightGray);
+	//text_layer_set_text_color(s_middle_line, GColorWhite);
+	text_layer_set_background_color(s_bottom_line, GColorOxfordBlue);
+	text_layer_set_text_color(s_bottom_line, GColorLightGray);
+	
+
 	text_layer_set_text(s_top_line, "UKHASnet");
 	text_layer_set_text(s_middle_line, "Node");
 	text_layer_set_text(s_bottom_line, "Watcher");
@@ -40,8 +48,9 @@ static void window_init(Window *window) {
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s",t_buffer));
-	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Location: %s",m_buffer));
+	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Packet: %s",m_buffer));
 	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s",b_buffer));
+	vibes_short_pulse();
 }
 
 static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format, char * buffer){
