@@ -11,7 +11,7 @@ const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
 
 
-enum WeatherKey {
+enum AppKeys {
   AppKeyPacket = 0x0         // TUPLE_CSTRING
 };
 
