@@ -9,10 +9,12 @@ static TextLayer *s_bottom_line;
 // Largest expected inbox and outbox message sizes
 const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
-
+static char s_buffer[256];
 
 enum AppKeys {
-  AppKeyPacket = 0x0         // TUPLE_CSTRING
+  AppKeyPacket = 0x0,         // TUPLE_CSTRING
+  AppKeyNode = 0x1,
+  AppKeyTime = 0x2
 };
 
 
@@ -41,29 +43,39 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	static char str[60];
-	snprintf(str, sizeof(str), "Receiving Message from dictionary of size %lu\n", (unsigned long)dict_size(iter));
-	printf(str);
-		// Does this message contain a temperature value?
-	Tuple *message_tuple = dict_find(iter, AppKeyPacket);
-	uint8_t buffer[256];
-	Tuple *tuple = dict_read_begin_from_buffer(iter, buffer, 256);
-	printf("Printing messages...\n");
-	while (tuple) {
+	// 	// Does this message contain a temperature value?
+	// Tuple *message_tuple = dict_find(iter, AppKeyPacket);
+	// // uint8_t buffer[256];
+	// // Tuple *tuple = dict_read_begin_from_buffer(iter, buffer, 256);
+	// // printf("Printing messages...\n");
+	// // while (tuple) {
 
-	  printf(tuple->value->cstring);
-	  tuple = dict_read_next(iter);
-	}
+	// //   printf(tuple->value->cstring);
+	// //   tuple = dict_read_next(iter);
+	// // }
 
+	// if(message_tuple) {
+	// 	printf("Found message string\n");
+	// 	// This value was stored as JS Number, which is stored here as int32_t
+	// 	char *message_name = message_tuple->value->cstring;
+	// 	static char s_buffer[256];
+	//     snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
+	    
+	// }
+	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket));
+
+}
+
+static char* get_message_from_key(DictionaryIterator *iter, AppKeys key){
+	Tuple *message_tuple = dict_find(iter, key);
 	if(message_tuple) {
 		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
-			static char s_buffer[256];
-    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
-    text_layer_set_text(s_middle_line, s_buffer);
+	    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
+	    return s_buffer;
 	}
-
+	return "";
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {

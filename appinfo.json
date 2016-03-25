@@ -1,6 +1,8 @@
 {
     "appKeys": {
-        "AppKeyPacket": 0
+        "AppKeyPacket": 0,
+        "AppKeyNode" : 1,
+        "AppKeyTime" : 2
     },
     "capabilities": [
         ""
