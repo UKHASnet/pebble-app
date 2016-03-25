@@ -41,11 +41,11 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 		// Does this message contain a temperature value?
 	Tuple *message_tuple = dict_find(iter, message);
 	uint8_t buffer[256];
-	Tuple *tuple = dict_read_begin_from_buffer(&iter, buffer, 256);
+	Tuple *tuple = dict_read_begin_from_buffer(iter, buffer, 256);
 	while (tuple) {
 
 	      printf(tuple->value->cstring);
-	  tuple = dict_read_next(&iter);
+	  tuple = dict_read_next(iter);
 	}
 
 	if(message_tuple) {
