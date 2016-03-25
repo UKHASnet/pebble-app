@@ -27,9 +27,9 @@ static void window_init(Window *window) {
 	setup_text_line(s_middle_line);
 	setup_text_line(s_bottom_line);
 
-	text_layer_set_text(s_top_line, "TOP");
-	text_layer_set_text(s_middle_line, "MIDDLE");
-	text_layer_set_text(s_bottom_line, "MEGA LOLZ");
+	text_layer_set_text(s_top_line, "UKHASnet");
+	text_layer_set_text(s_middle_line, "Node");
+	text_layer_set_text(s_bottom_line, "Watcher");
 
 	layer_add_child(window_layer, text_layer_get_layer(s_top_line));
 	layer_add_child(window_layer, text_layer_get_layer(s_middle_line));
@@ -37,36 +37,18 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	// 	// Does this message contain a temperature value?
-	// Tuple *message_tuple = dict_find(iter, AppKeyPacket);
-	// // uint8_t buffer[256];
-	// // Tuple *tuple = dict_read_begin_from_buffer(iter, buffer, 256);
-	// // printf("Printing messages...\n");
-	// // while (tuple) {
-
-	// //   printf(tuple->value->cstring);
-	// //   tuple = dict_read_next(iter);
-	// // }
-
-	// if(message_tuple) {
-	// 	printf("Found message string\n");
-	// 	// This value was stored as JS Number, which is stored here as int32_t
-	// 	char *message_name = message_tuple->value->cstring;
-	// 	static char s_buffer[256];
-	//     snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
-	    
-	// }
-	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket));
-
+	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s",));
+	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Location: %s"));
+	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s"));
 }
 
-static char* get_message_from_key(DictionaryIterator *iter, AppKeys key){
+static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format){
 	Tuple *message_tuple = dict_find(iter, key);
 	if(message_tuple) {
 		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
-	    snprintf(s_buffer, sizeof(s_buffer), "Location: %s", message_name);
+	    snprintf(s_buffer, sizeof(s_buffer), format, message_name);
 	    return s_buffer;
 	}
 	return "";
