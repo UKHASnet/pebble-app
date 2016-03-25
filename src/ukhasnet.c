@@ -9,7 +9,6 @@ static TextLayer *s_bottom_line;
 // Largest expected inbox and outbox message sizes
 const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
-static char s_buffer[256];
 
 
 static void window_init(Window *window) {
@@ -43,6 +42,7 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 }
 
 static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format){
+	char s_buffer[64];
 	Tuple *message_tuple = dict_find(iter, key);
 	if(message_tuple) {
 		printf("Found message string\n");
