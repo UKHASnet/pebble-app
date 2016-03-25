@@ -12,7 +12,15 @@
     "longName": "UKHASNET",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/icon",
+                "menuIcon": true,
+                "name": "ICON",
+                "targetPlatforms": null,
+                "type": "png-trans"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "UKHASNET",
