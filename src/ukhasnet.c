@@ -41,7 +41,7 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	snprintf(str, sizeof(str), "Receiving Message from dictionary of size %lu\n", (unsigned long)dict_size(iter));
 	printf(str);
 		// Does this message contain a temperature value?
-	Tuple *message_tuple = dict_find(iter, message);
+	Tuple *message_tuple = dict_find(iter, AppKeyPacket);
 	uint8_t buffer[256];
 	Tuple *tuple = dict_read_begin_from_buffer(iter, buffer, 256);
 	printf("Printing messages...\n");
@@ -62,6 +62,11 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 
 }
 
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  // A message was received, but had to be dropped
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped. Reason: %d", (int)reason);
+}
+
 static void setup_text_line(TextLayer *text_layer) {
 	text_layer_set_background_color(text_layer, GColorClear);
 	text_layer_set_text_color(text_layer, GColorBlack);
@@ -77,6 +82,8 @@ static void window_deinit(Window *window) {
 
 static void register_callbacks() {
 	app_message_register_inbox_received(inbox_recieved_callback);
+	// Register to be notified about inbox dropped events
+	app_message_register_inbox_dropped(inbox_dropped_callback);
 }
 
 

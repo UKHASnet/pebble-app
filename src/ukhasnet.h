@@ -1,7 +1,7 @@
 // ukhasnet.h
 
 typedef enum  {
-	message = 0
+	AppKeyPacket = 0
 } AppKeys;
 
 

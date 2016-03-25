@@ -51,7 +51,7 @@ function getData(){
 	  if (response.lPackets.length>0){
 	  	var newestMessage = response.lPackets[0];
 	  	var dict = {
-		  'message': newestMessage.p
+		  'AppKeyPacket': newestMessage.p
 		};
 		console.log("Sending: "+newestMessage.p);
 	  	Pebble.sendAppMessage(dict, messageSuccessHandler, messageFailureHandler);
