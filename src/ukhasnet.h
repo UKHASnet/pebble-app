@@ -1,8 +1,8 @@
 // ukhasnet.h
 
-typedef enum  {
-	AppKeyPacket = 0
-} AppKeys;
+enum WeatherKey {
+  AppKeyPacket = 0x0         // TUPLE_CSTRING
+};
 
 
 static void main_window_init();

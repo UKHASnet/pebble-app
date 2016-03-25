@@ -11,6 +11,10 @@ const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
 
 
+enum WeatherKey {
+  AppKeyPacket = 0x0         // TUPLE_CSTRING
+};
+
 
 static void window_init(Window *window) {
 	// Get information about the Window
