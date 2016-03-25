@@ -50,7 +50,7 @@ static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const ch
 		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
-	    snprintf(buffer, sizeof(buffer), format, message_name);
+	    snprintf(buffer, 64, format, message_name);
 	    return buffer;
 	}
 	return "";
