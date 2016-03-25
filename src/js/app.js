@@ -54,7 +54,7 @@ function getData(){
 	  	var dict = {
 		  'AppKeyPacket': newestMessage.p,
 		  'AppKeyNode': localStorage.getItem('nodeName'),
-		  'AppKeyTime' : newestMessage.t;
+		  'AppKeyTime' : newestMessage.t
 		};
 		console.log("Sending: "+newestMessage.p);
 	  	Pebble.sendAppMessage(dict, messageSuccessHandler, messageFailureHandler);
