@@ -43,14 +43,8 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	uint8_t buffer[256];
 	Tuple *tuple = dict_read_begin_from_buffer(&iter, buffer, 256);
 	while (tuple) {
-	  switch (tuple->key) {
-	    case SOME_DATA_KEY:
-	      foo(tuple->value->data, tuple->length);
-	      break;
-	    case SOME_STRING_KEY:
-	      bar(tuple->value->cstring);
-	      break;
-	  }
+
+	      printf(tuple->value->cstring);
 	  tuple = dict_read_next(&iter);
 	}
 
