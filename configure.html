@@ -25,6 +25,7 @@ function loadNodes(){
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
 			var nodesList = JSON.parse(xmlHttp.responseText);
 		var select = document.getElementById("selectName");
+        nodesList.sort();
 		for (i = 0; i < nodesList.length; i++){
 			var opt = document.createElement("option");
 			opt.value = nodesList[i].name;
