@@ -31,7 +31,7 @@ static void window_init(Window *window) {
 
 	text_layer_set_background_color(s_top_line, GColorPictonBlue);
 	text_layer_set_text_color(s_top_line, GColorWhite);
-	text_layer_set_background_color(s_middle_line, ColorLightGray);
+	text_layer_set_background_color(s_middle_line, GColorLightGray);
 	//text_layer_set_text_color(s_middle_line, GColorWhite);
 	text_layer_set_background_color(s_bottom_line, GColorOxfordBlue);
 	text_layer_set_text_color(s_bottom_line, GColorLightGray);
