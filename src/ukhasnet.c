@@ -11,7 +11,7 @@ const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
 static char s_buffer[256];
 
-enum AppKeys {
+typedef enum AppKeys {
   AppKeyPacket = 0x0,         // TUPLE_CSTRING
   AppKeyNode = 0x1,
   AppKeyTime = 0x2
