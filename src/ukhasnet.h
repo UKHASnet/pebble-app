@@ -1,5 +1,9 @@
 // ukhasnet.h
-
+typedef enum AppKeys {
+  AppKeyPacket = 0x0,         // TUPLE_CSTRING
+  AppKeyNode = 0x1,
+  AppKeyTime = 0x2
+};
 
 static void main_window_init();
 
