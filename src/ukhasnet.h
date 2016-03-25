@@ -15,5 +15,5 @@ static void app_deinit();
 
 static void setup_text_line(TextLayer *text_layer);
 
-static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format);
+static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format, char * buffer);
 

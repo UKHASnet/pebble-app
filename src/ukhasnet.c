@@ -9,6 +9,9 @@ static TextLayer *s_bottom_line;
 // Largest expected inbox and outbox message sizes
 const uint32_t inbox_size = 256;
 const uint32_t outbox_size = 10;
+static char t_buffer[64];
+static char m_buffer[64];
+static char b_buffer[64];
 
 
 static void window_init(Window *window) {
@@ -36,20 +39,19 @@ static void window_init(Window *window) {
 }
 
 static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
-	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s"));
-	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Location: %s"));
-	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s"));
+	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s",t_buffer));
+	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Location: %s",m_buffer));
+	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s",b_buffer));
 }
 
-static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format){
-	char s_buffer[64];
+static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format, char * buffer){
 	Tuple *message_tuple = dict_find(iter, key);
 	if(message_tuple) {
 		printf("Found message string\n");
 		// This value was stored as JS Number, which is stored here as int32_t
 		char *message_name = message_tuple->value->cstring;
-	    snprintf(s_buffer, sizeof(s_buffer), format, message_name);
-	    return s_buffer;
+	    snprintf(buffer, sizeof(buffer), format, message_name);
+	    return buffer;
 	}
 	return "";
 }
