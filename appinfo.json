@@ -16,9 +16,8 @@
             {
                 "file": "images/icon",
                 "menuIcon": true,
-                "name": "ICON_RESOURCE",
                 "targetPlatforms": null,
-                "type": "bitmap"
+                "type": "png-trans"
             }
         ]
     },
