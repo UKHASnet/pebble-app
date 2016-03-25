@@ -1,3 +1,5 @@
 # Ignore all vim swap files
 *.swp
 *.*~
+build
+.*
