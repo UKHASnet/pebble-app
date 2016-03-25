@@ -34,7 +34,7 @@ static void window_init(Window *window) {
 	text_layer_set_background_color(s_middle_line, GColorRajah);
 	//text_layer_set_text_color(s_middle_line, GColorWhite);
 	text_layer_set_background_color(s_bottom_line, GColorOxfordBlue);
-	text_layer_set_text_color(s_bottom_line, GColorLightGray);
+	text_layer_set_text_color(s_bottom_line, GColorWhite);
 	
 
 	text_layer_set_text(s_top_line, "UKHASnet");
@@ -50,7 +50,7 @@ static void inbox_recieved_callback(DictionaryIterator *iter, void *context) {
 	text_layer_set_text(s_top_line, get_message_from_key(iter,AppKeyNode, "Node: %s",t_buffer));
 	text_layer_set_text(s_middle_line, get_message_from_key(iter,AppKeyPacket, "Packet: %s",m_buffer));
 	text_layer_set_text(s_bottom_line, get_message_from_key(iter,AppKeyTime, "Time: %s",b_buffer));
-	vibes_short_pulse();
+	//vibes_short_pulse();
 }
 
 static char* get_message_from_key(DictionaryIterator *iter, AppKeys key,const char * format, char * buffer){
