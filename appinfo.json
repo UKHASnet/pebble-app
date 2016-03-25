@@ -1,7 +1,6 @@
 {
     "appKeys": {
-        "message": 1,
-        "status": 0
+        "AppKeyPacket": 0
     },
     "capabilities": [
         ""
